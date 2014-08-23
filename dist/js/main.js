@@ -19549,34 +19549,31 @@ var AppConstants = require('../constants/app-constants.js');
 var AppDispatcher = require('../dispatchers/app-dispatcher.js');
 
 var AppActions = {
-  addItem: function(item) {
+  addItem:function(item){
     AppDispatcher.handleViewAction({
       actionType: AppConstants.ADD_ITEM,
       item: item
     })
   },
-
-  removeItem: function(index) {
+  removeItem:function(index){
     AppDispatcher.handleViewAction({
       actionType: AppConstants.REMOVE_ITEM,
       index: index
     })
   },
-
-  decreaseItem: function(index) {
+  decreaseItem:function(index){
     AppDispatcher.handleViewAction({
       actionType: AppConstants.DECREASE_ITEM,
       index: index
     })
   },
-
-  increaseItem: function(index) {
+  increaseItem:function(index){
     AppDispatcher.handleViewAction({
       actionType: AppConstants.INCREASE_ITEM,
       index: index
     })
   }
-};
+}
 
 module.exports = AppActions;
 },{"../constants/app-constants.js":165,"../dispatchers/app-dispatcher.js":166}],158:[function(require,module,exports){
@@ -19622,7 +19619,6 @@ var Cart = React.createClass({displayName: 'Cart',
 
   render:function(){
     var total=0;
-
     var items = this.state.items.map(function(item, i){
       var subtotal = item.cost*item.qty;
       total+=subtotal;
@@ -19685,11 +19681,12 @@ var Catalog = React.createClass({displayName: 'Catalog',
     var items = this.state.items.map(function(item){
       return React.DOM.tr(null, React.DOM.td(null, item.title), React.DOM.td(null, "$", item.cost), React.DOM.td(null, AddToCart({item: item})))
     })
+
     return (
-        React.DOM.table({className: "table table-hover"}, 
-        items
-        )
+      React.DOM.table({className: "table table-hover"}, 
+      items
       )
+    )
   }
 });
 
@@ -19701,7 +19698,7 @@ var AppActions = require('../actions/app-actions.js');
 
 var Decrease = React.createClass({displayName: 'Decrease',
   handleClick:function(){
-    AppActions.decreaseItem(this.props.item);
+    AppActions.decreaseItem(this.props.index);
   },
 
   render:function(){
@@ -19717,7 +19714,7 @@ var AppActions = require('../actions/app-actions.js');
 
 var Increase = React.createClass({displayName: 'Increase',
   handleClick:function(){
-    AppActions.increaseItem(this.props.item);
+    AppActions.increaseItem(this.props.index);
   },
 
   render:function(){

@@ -24,7 +24,6 @@ var Cart = React.createClass({
 
   render:function(){
     var total=0;
-
     var items = this.state.items.map(function(item, i){
       var subtotal = item.cost*item.qty;
       total+=subtotal;

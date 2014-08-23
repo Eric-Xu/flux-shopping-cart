@@ -4,7 +4,7 @@ var AppActions = require('../actions/app-actions.js');
 
 var Increase = React.createClass({
   handleClick:function(){
-    AppActions.increaseItem(this.props.item);
+    AppActions.increaseItem(this.props.index);
   },
 
   render:function(){
