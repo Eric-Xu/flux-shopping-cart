@@ -45,6 +45,11 @@ function _addItem(item){
   }
 }
 
+
+// In Flux, application state is maintained only in stores. Where dependencies
+// do occur between stores, they are kept in a strict hierarchy, with synchronous
+// updates managed by the dispatcher.
+
 var AppStore = merge(EventEmitter.prototype, {
   emitChange:function(){
     this.emit(CHANGE_EVENT)
@@ -67,7 +72,8 @@ var AppStore = merge(EventEmitter.prototype, {
   },
 
   dispatcherIndex:AppDispatcher.register(function(payload){ // callback registered with the dispatcher
-    var action = payload.action; // payload originated from AppActions, flowed through AppDispatcher { source: 'VIEW_ACTION', action: { actionType: AppConstants.WHATEVER, item: item } }
+    var action = payload.action;  // payload originated from AppActions, flowed through AppDispatcher
+                                  // { source: 'VIEW_ACTION', action: { actionType: AppConstants.WHATEVER, item: item } }
     switch(action.actionType){
       case AppConstants.ADD_ITEM:
         _addItem(payload.action.item);
@@ -85,8 +91,11 @@ var AppStore = merge(EventEmitter.prototype, {
         _decreaseItem(payload.action.index);
         break;
     }
-    AppStore.emitChange();
-
+    AppStore.emitChange();  // emit a "change" event to alert the controller-views (CV) that
+                            // a change to the data layer has occurred. CV's are simply
+                            // views found at the top of the hierarchy (ie. app-cart) that
+                            // retrieve data from the stores and pass this data down to their
+                            // children.
     return true;
   })
 })

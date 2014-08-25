@@ -1,10 +1,8 @@
-React/Flux Shopping Cart
-=========
+# React/Flux Shopping Cart
 
-Tutorial source: [Egghead.io]
+> Tutorial source: [Egghead.io]
 
-Run Instructions
------------
+## Running
 
 Check that node and npm are installed:
 ```sh
@@ -19,9 +17,8 @@ npm install gulp
 ```
 
 Install additional Node modules:
-```sh
-npm install gulp-browserify gulp-concat react reactify es6-promise
-```
+
+    npm install gulp-browserify gulp-concat react reactify es6-promise
 
 Run Gulp build:
 ```sh

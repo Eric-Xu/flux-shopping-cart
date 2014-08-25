@@ -6,7 +6,7 @@ var Increase = require('../components/app-increase.js');
 var Decrease = require('../components/app-decrease.js');
 
 function cartItems(){
-  return {items: AppStore.getCart()}
+  return {items: AppStore.getCart()}  // retrieves data from AppStore
 }
 
 var Cart = React.createClass({
@@ -15,6 +15,10 @@ var Cart = React.createClass({
   },
 
   componentWillMount:function(){
+    // listens to "change" events emitted by AppStore after it receives a
+    // payload from AppDispatcher. Cart then retrieves data from AppStore
+    // and updates itself and any children by calling render(), setState(),
+    // or forceUpdate().
     AppStore.addChangeListener(this._onChange)
   },
 
