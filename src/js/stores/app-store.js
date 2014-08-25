@@ -66,8 +66,8 @@ var AppStore = merge(EventEmitter.prototype, {
     return _catalog
   },
 
-  dispatcherIndex:AppDispatcher.register(function(payload){
-    var action = payload.action; // this is our action from handleViewAction
+  dispatcherIndex:AppDispatcher.register(function(payload){ // callback registered with the dispatcher
+    var action = payload.action; // payload originated from AppActions, flowed through AppDispatcher { source: 'VIEW_ACTION', action: { actionType: AppConstants.WHATEVER, item: item } }
     switch(action.actionType){
       case AppConstants.ADD_ITEM:
         _addItem(payload.action.item);
